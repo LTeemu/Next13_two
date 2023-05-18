@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from "gsap";
-import SvgMoon from './svg/SvgMoon';
 import { usePathname } from 'next/navigation'
+import SvgEmoji from './svg/SvgEmoji';
 
 export default function Header() {
   const links = [
@@ -66,14 +66,17 @@ export default function Header() {
           {links.map(link => {
             return (
               <li key={link.href} className={`w-full max-w-2xl mx-auto text-white ${path === link.href && 'pointer-events-none invert-[0.4]'}`}>
-                <Link href={link.href}>{link.name}</Link>
+                <Link
+                  onMouseEnter={() => gsap.to('#emojimouth', { scaleY: 1.2 })}
+                  onMouseLeave={() => gsap.to('#emojimouth', { scaleY: 0.4 })}
+                  href={link.href}>{link.name}</Link>
               </li>
             )
           })}
         </ul>
 
-        <div id='svg' className='h-[80vmin] z-10 absolute invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
-          <SvgMoon className='rounded-full fill-zinc-800 bg-gradient-radial from-zinc-200 via-zinc-600 to-black' />
+        <div id='svg' className='h-[80vmin] my-auto z-10 fixed invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
+          {typeof window !== 'undefined' && <SvgEmoji open={open} container={document.querySelector('#menu')} />}
         </div>
       </nav>
       <button id='btn' onClick={() => setOpen(!open)} className='sticky z-20 h-screen px-0.5 bg-zinc-800'>

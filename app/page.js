@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <section className='bg-red-200'>
+    <section>
       <p>HOME</p>
     </section>
   )

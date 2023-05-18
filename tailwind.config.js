@@ -12,6 +12,16 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      keyframes: {
+        eyeblink: {
+          '0%, 100%': { clipPath: 'ellipse(45% 45% at 50% 50%)' },
+          '90%': { clipPath: 'ellipse(45% 45% at 50% 50%)' },
+          '95%': { clipPath: 'ellipse(45% 0% at 50% 50%)' }
+        }
+      },
+      animation: {
+        eyeblink: 'eyeblink 20s ease-in-out infinite',
       }
     },
   },
