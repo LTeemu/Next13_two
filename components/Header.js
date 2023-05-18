@@ -34,8 +34,8 @@ export default function Header() {
         .to('#btn span', { color: 'black' }, '<')
         .addLabel('label1')
         .fromTo('#menu ul li', { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, stagger: 0.08, ease: 'back.out(4)' })
-        .set('#svg', { autoAlpha: 1 })
-        .fromTo('#svg', { x: '100%', rotate: -60, scale: 0.6 }, { xPercent: -52, rotate: -72, scale: 1, ease: "elastic.out(1, 0.32)", duration: 4 })
+        .set('#svg', { autoAlpha: 1 }, '<label1')
+        .fromTo('#svg', { x: '100%', rotate: -60, scale: 0.9 }, { xPercent: -50, rotate: -0, scale: 1, ease: "elastic.out(1, 0.8)", duration: 4 }, '<')
         .reverse()
         .paused(true)
     })
@@ -61,11 +61,11 @@ export default function Header() {
 
   return (
     <header>
-      <nav id='menu' className='fixed top-0 grid w-screen h-screen from-zinc-800 to-white bg-gradient-to-r right-full'>
-        <ul ref={menuUL} className='z-20 grid w-full max-h-screen py-6 pl-12 overflow-x-hidden overflow-y-auto text-3xl font-bold tracking-wider place-self-center'>
+      <nav id='menu' className='fixed top-0 grid w-screen h-screen bg-zinc-800 right-full'>
+        <ul ref={menuUL} className='z-20 grid w-full max-h-screen py-6 pl-12 overflow-x-hidden overflow-y-auto text-3xl font-bold tracking-wider gap-y-1 place-self-center'>
           {links.map(link => {
             return (
-              <li key={link.href} className={`w-full max-w-2xl mx-auto text-white ${path === link.href && 'pointer-events-none invert'}`}>
+              <li key={link.href} className={`w-full max-w-2xl mx-auto text-white ${path === link.href && 'pointer-events-none invert-[0.4]'}`}>
                 <Link href={link.href}>{link.name}</Link>
               </li>
             )
@@ -73,7 +73,7 @@ export default function Header() {
         </ul>
 
         <div id='svg' className='h-[80vmin] z-10 absolute invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
-          <SvgMoon className='rounded-full fill-zinc-800 bg-gradient-radial from-stone-300 via-stone-400 to-black' />
+          <SvgMoon className='rounded-full fill-zinc-800 bg-gradient-radial from-zinc-200 via-zinc-600 to-black' />
         </div>
       </nav>
       <button id='btn' onClick={() => setOpen(!open)} className='sticky z-20 h-screen px-0.5 bg-zinc-800'>
