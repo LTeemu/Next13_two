@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { gsap } from "gsap";
 import { usePathname } from 'next/navigation'
 import SvgEmoji from './svg/SvgEmoji';
@@ -26,7 +26,7 @@ export default function Header() {
   const menuContainer = useRef()
   const path = usePathname()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let menuLinks = menuContainer.current.querySelectorAll('ul li')
     const ctx = gsap.context(() => {
       menuTL.current
@@ -43,7 +43,7 @@ export default function Header() {
     return () => ctx.revert();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (open) {
       if (menuUL.current.scrollTop !== 0) { menuUL.current.scrollTop = 0 }
       menuTL.current.timeScale(1).reversed(false).play()
@@ -52,7 +52,7 @@ export default function Header() {
     }
   }, [open]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     menuTL.current.seek(0)
   }, []);
 
