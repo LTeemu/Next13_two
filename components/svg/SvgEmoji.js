@@ -1,9 +1,9 @@
 import { gsap } from 'gsap';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 var _ = require('lodash');
 
 const SvgEmoji = (props) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     let eyeX
     let eyeY
 
@@ -27,7 +27,7 @@ const SvgEmoji = (props) => {
     }
   }, [props]);
 
-  gsap.set('#emojimouth', { scaleY: 0.4 })
+  gsap.set('#emojimouth', { scaleY: 0.2 })
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
@@ -47,7 +47,7 @@ const SvgEmoji = (props) => {
       <circle cx="355" cy="202.2" r="62.1" fill="#FFF" />
       <circle cx="355" cy="202.2" r="38.6" fill="#3D4349" />
       <path fill="#FFF" d="M382 201c-2 0-3-1-4-3a25 25 0 0 0-28-20c-2 0-4-1-4-3-1-2 1-4 2-4a32 32 0 0 1 37 26c0 2-1 4-3 4z" />
-      <path id='emojimouth' fill="#3D4349" d="M317 379H191a27 27 0 1 1 0-54h126c15 0 27 12 27 27s-12 27-27 27z" />
+      <path id='emojimouth' fill="#CE9F24" d="M317 379H191a27 27 0 1 1 0-54h126c15 0 27 12 27 27s-12 27-27 27z" />
     </svg >
   )
 }
