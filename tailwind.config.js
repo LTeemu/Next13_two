@@ -22,6 +22,9 @@ module.exports = {
       },
       animation: {
         eyeblink: 'eyeblink 20s ease-in-out infinite',
+      },
+      transitionTimingFunction: {
+        'circle': 'cubic-bezier(0, .5, .5, 1)'
       }
     },
   },
