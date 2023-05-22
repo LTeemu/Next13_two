@@ -14,13 +14,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${caveat.variable} ${exo2.variable} font-exo2 overflow-hidden`}>
-        <div className='relative flex'>
-          <Header />
-          <main className='flex-1'>
-            {children}
-          </main>
-        </div>
+      <body className={`relative h-full flex ${caveat.variable} ${exo2.variable} font-exo2 overflow-hidden`}>
+        <Header />
+        <main className='flex-1'>
+          {children}
+        </main>
       </body>
     </html>
   )
