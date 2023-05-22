@@ -70,8 +70,8 @@ export default function Header() {
   }, [path]);
 
   return (
-    <header className='h-full'>
-      <div id='sidebar' className={`sticky text-zinc-100 z-20 flex flex-col h-full px-2 bg-zinc-800 ${open && 'invert contrast-150'}`}>
+    <header>
+      <div id='sidebar' className={`sticky text-zinc-100 z-20 flex flex-col flex-1 h-full px-2 bg-zinc-800 ${open && 'invert contrast-150'}`}>
         <button title={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)} className='flex-1'>
           <div className={`relative [&>span]:transition-all [&>span]:duration-[280ms] [&>span]:ease-circle [&>span]:absolute [&>span]:w-full [&>span]:h-[0.12em] w-5 h-4 flex flex-col justify-center [&>span]:bg-zinc-100`}>
             <span className={open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'top-0'}></span>
@@ -91,7 +91,7 @@ export default function Header() {
       </div>
 
       <nav ref={menuContainer} id='menu' className='fixed top-0 grid w-screen h-full bg-zinc-800 right-full'>
-        <ul ref={menuUL} className='z-20 grid w-full max-h-screen py-6 pl-12 overflow-x-hidden overflow-y-auto text-3xl font-bold tracking-wider gap-y-1 place-self-center'>
+        <ul ref={menuUL} className='z-20 grid w-full max-h-screen py-8 pl-12 overflow-x-hidden overflow-y-auto text-3xl font-bold tracking-wider gap-y-1 place-self-center'>
           {links.map(link => {
             return (
               <li key={link.href} className={`w-full max-w-2xl mx-auto text-white ${path === link.href && 'pointer-events-none invert-[0.4]'}`}>
