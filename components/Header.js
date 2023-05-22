@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { usePathname } from 'next/navigation'
 import SvgEmoji from './svg/SvgEmoji';
 import { GrGithub } from 'react-icons/gr'
+import useTopBarHeight from '@/hooks/useTopBarHeight';
 
 export default function Header() {
   const links = [
@@ -26,6 +27,7 @@ export default function Header() {
   const menuUL = useRef()
   const menuContainer = useRef()
   const path = usePathname()
+  const topBarHeight = useTopBarHeight();
 
   useEffect(() => {
     let menuLinks = menuContainer.current.querySelectorAll('ul li')
@@ -70,7 +72,7 @@ export default function Header() {
   }, [path]);
 
   return (
-    <header className='h-screen'>
+    <header className={`h-screen -mt-${topBarHeight}`}>
       <div id='sidebar' className={`sticky text-zinc-100 z-20 flex flex-col h-full px-2 bg-zinc-800 ${open && 'invert contrast-150'}`}>
         <button title={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)} className='flex-1'>
           <div className={`relative [&>span]:transition-all [&>span]:duration-[280ms] [&>span]:ease-circle [&>span]:absolute [&>span]:w-full [&>span]:h-[0.12em] w-5 h-4 flex flex-col justify-center [&>span]:bg-zinc-100`}>
@@ -84,7 +86,7 @@ export default function Header() {
           <div className='grid place-content-center'>
             <span className={`text-lg leading-[0] tracking-widest`} style={{ writingMode: 'vertical-rl' }}>TL</span>
           </div>
-          <Link href='https://github.com/lteemu' title='Github' target='_blank' className='hover:contrast-75'>
+          <Link href='https://github.com/lteemu' title='Github' target='_blank' className='hover:brightness-75'>
             <GrGithub style={{ fontSize: '1.4rem' }} />
           </Link>
         </div>
@@ -108,7 +110,7 @@ export default function Header() {
           })}
         </ul>
 
-        <div id='svg' className='h-[80vmin] my-auto z-10 absolute brightness-50 sm:brightness-100 invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
+        <div id='svg' className='h-[80vmin] my-auto z-10 fixed brightness-50 sm:brightness-100 invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
           <SvgEmoji open={open} container={menuContainer.current} />
         </div>
       </nav>
