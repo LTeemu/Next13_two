@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={`min-h-full flex ${caveat.variable} ${exo2.variable} font-exo2 overflow-x-hidden`}>
         <Header />
-        <main>{children}</main>
+        <main className='flex-1'>{children}</main>
       </body>
     </html>
   )

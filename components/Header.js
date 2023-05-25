@@ -70,7 +70,7 @@ export default function Header() {
   }, [path]);
 
   return (
-    <header>
+    <header className='z-20'>
       <div id='sidebar' className={`sticky text-zinc-100 z-20 flex flex-col flex-1 h-full px-2 bg-zinc-800 ${open && 'invert contrast-150'}`}>
         <button title={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)} className='flex-1'>
           <div className={`relative [&>span]:transition-all [&>span]:duration-[280ms] [&>span]:ease-circle [&>span]:absolute [&>span]:w-full [&>span]:h-[0.12em] w-5 h-4 flex flex-col justify-center [&>span]:bg-zinc-100`}>
