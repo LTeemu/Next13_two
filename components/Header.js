@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <header className='z-10 h-full w-[2.4rem]'>
-      <div className={`fixed text-zinc-100 z-30 flex flex-col flex-1 items-center h-full w-[2.4rem] bg-zinc-800 ${open && 'invert contrast-150'}`}>
+      <aside className={`fixed text-zinc-100 z-30 flex flex-col flex-1 items-center h-full w-[2.4rem] bg-zinc-800 ${open && 'invert contrast-150'}`}>
         <button title={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)} className='flex-1'>
           <div className={`relative [&>span]:transition-all [&>span]:duration-[280ms] [&>span]:ease-circle [&>span]:absolute [&>span]:w-full [&>span]:h-[0.12em] w-5 h-4 flex flex-col justify-center [&>span]:bg-zinc-100`}>
             <span className={open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'top-0'}></span>
@@ -90,7 +90,7 @@ export default function Header() {
             <GrGithub style={{ fontSize: '1.4rem' }} />
           </Link>
         </div>
-      </div>
+      </aside>
 
       <nav ref={menuContainer} id='menu' className='fixed top-0 grid w-screen h-full bg-zinc-800 right-full'>
         <ul ref={menuUL} className='z-20 grid w-full max-h-screen py-8 pl-12 overflow-x-hidden overflow-y-auto text-3xl font-bold tracking-wider gap-y-1 place-self-center'>
@@ -110,7 +110,7 @@ export default function Header() {
           })}
         </ul>
 
-        <div id='svg' className='h-[80vmin] my-auto z-10 fixed brightness-50 sm:brightness-100 invisible aspect-square right-0 top-[50%] -translate-y-1/2'>
+        <div id='svg' className='h-[80vmin] grid self-center z-10 fixed brightness-50 sm:brightness-100 invisible aspect-square right-0'>
           <SvgEmoji open={open} container={menuContainer.current} />
         </div>
       </nav>

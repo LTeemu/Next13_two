@@ -1,7 +1,7 @@
 import './globals.css'
 import { Quicksand, Rubik_80s_Fade } from 'next/font/google'
 import Header from '@/components/Header'
-//import Footer from '@/components/Footer'
+import Footer from '@/components/Footer'
 
 const rubik = Rubik_80s_Fade({ subsets: ['latin'], weight: '400', variable: '--font-rubik' })
 const quicksand = Quicksand({ subsets: ['latin'], weight: 'variable', variable: '--font-quicksand' })
@@ -13,9 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`min-h-full flex ${rubik.variable} ${quicksand.variable} font-quicksand overflow-x-hidden`}>
+      <body className={`flex min-h-full ${rubik.variable} ${quicksand.variable} font-quicksand overflow-x-hidden`}>
         <Header />
-        <main className='flex-1'>{children}</main>
+        <div className='relative flex flex-col flex-1 min-h-full'>
+          <main className='flex-1'>
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )
