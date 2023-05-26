@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        caveat: ['var(--font-caveat)'],
-        exo2: ['var(--font-exo2)'],
+        rubik: ['var(--font-rubik)'],
+        quicksand: ['var(--font-quicksand)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

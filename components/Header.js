@@ -45,8 +45,10 @@ export default function Header() {
   useEffect(() => {
     if (open) {
       if (menuUL.current.scrollTop !== 0) { menuUL.current.scrollTop = 0 }
+      document.body.style.overflow = 'hidden';
       menuTL.current.timeScale(1).reversed(false).play()
     } else {
+      document.body.style.overflow = 'auto';
       menuTL.current.seek('label1').timeScale(2).reversed(true)
     }
 
@@ -70,8 +72,8 @@ export default function Header() {
   }, [path]);
 
   return (
-    <header className='z-20'>
-      <div id='sidebar' className={`sticky text-zinc-100 z-20 flex flex-col flex-1 h-full px-2 bg-zinc-800 ${open && 'invert contrast-150'}`}>
+    <header className='z-10 h-full w-[2.4rem]'>
+      <div className={`fixed text-zinc-100 z-30 flex flex-col flex-1 items-center h-full w-[2.4rem] bg-zinc-800 ${open && 'invert contrast-150'}`}>
         <button title={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)} className='flex-1'>
           <div className={`relative [&>span]:transition-all [&>span]:duration-[280ms] [&>span]:ease-circle [&>span]:absolute [&>span]:w-full [&>span]:h-[0.12em] w-5 h-4 flex flex-col justify-center [&>span]:bg-zinc-100`}>
             <span className={open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'top-0'}></span>
@@ -82,7 +84,7 @@ export default function Header() {
 
         <div className='grid py-2 border-t-2 border-dashed gap-y-2 border-t-zinc-600'>
           <div className='grid place-content-center'>
-            <span className={`text-lg leading-[0] tracking-widest`} style={{ writingMode: 'vertical-rl' }}>TL</span>
+            <span className={`text-lg leading-[0] tracking-widest font-rubik`} style={{ writingMode: 'vertical-rl' }}>TL</span>
           </div>
           <Link href='https://github.com/lteemu' title='Github' target='_blank' className='hover:brightness-75'>
             <GrGithub style={{ fontSize: '1.4rem' }} />

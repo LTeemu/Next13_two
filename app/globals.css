@@ -19,13 +19,8 @@ html {
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid purple;
+  display: grid !important;
+  place-content: center;
 }
 
 .swiper-slide img {
