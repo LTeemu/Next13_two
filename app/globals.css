@@ -5,6 +5,7 @@
 :root {
   font-size: 1.25rem;
   font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.75rem);
+  color-scheme: only light;
 }
 
 html {
