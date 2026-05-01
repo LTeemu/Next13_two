@@ -1,7 +1,7 @@
 export default function Page() {
   return (
-    <section>
-      <p>Empty</p>
+    <section className="p-2">
+      <p>These are empty</p>
     </section>
   )
 }

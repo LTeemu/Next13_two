@@ -4,35 +4,52 @@ var _ = require('lodash');
 
 const SvgEmoji = (props) => {
   useEffect(() => {
-    let eyeX
-    let eyeY
+    const containerElement = props.container?.current;
+    if (!containerElement) return;
+
+    let eyeX, eyeY;
 
     const calcRange = () => {
-      let containerSize = props.container?.getBoundingClientRect()
-      eyeX = gsap.utils.mapRange(0, containerSize?.width, -30, 30)
-      eyeY = gsap.utils.mapRange(0, containerSize?.height, -30, 30)
+      let containerSize = containerElement.getBoundingClientRect()
+      if (containerSize) {
+        eyeX = gsap.utils.mapRange(0, containerSize.width, -30, 30)
+        eyeY = gsap.utils.mapRange(0, containerSize.height, -30, 30)
+      }
     }
     calcRange()
 
     const moveEye = (e) => {
+      if (!eyeX || !eyeY) return;
       gsap.to('#eyeR', { translateX: eyeX(e.clientX), translateY: eyeY(e.clientY), duration: 0.1, ease: "linear" })
     }
 
-    if (props.open) {
+    const throttledMouseMove = _.throttle((e) => moveEye(e), 100);
+    const throttledResize = _.throttle(calcRange, 200);
+    window.onmousemove = throttledMouseMove;
+    window.onresize = throttledResize;
+
+    if (props.trackMouse) {
       window.onmousemove = _.throttle((e) => moveEye(e), 100)
       window.onresize = _.throttle(calcRange, 200)
     } else {
       window.onmousemove = null
       window.onresize = null
     }
-  }, [props]);
+
+    return () => {
+      throttledMouseMove.cancel();
+      throttledResize.cancel();
+      window.onmousemove = null;
+      window.onresize = null;
+    };
+  }, [props.container]);
 
   useEffect(() => {
     gsap.set('#emojimouth', { scaleY: 0.2 })
   }, []);
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <svg style={props.style} className={props.className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
       <circle cx="250" cy="250" r="250" fill="#FFD434" />
       <path fill="#FAC12C" d="M389 42a249 249 0 0 1-181 422c-52 0-100-15-139-42A250 250 0 1 0 389 42z" />
 

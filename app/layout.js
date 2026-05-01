@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 const rubik = Rubik_80s_Fade({ subsets: ['latin'], weight: '400', variable: '--font-rubik', display: 'swap' })
-const quicksand = Quicksand({ subsets: ['latin'], weight: 'variable', variable: '--font-quicksand', display: 'swap'  })
+const quicksand = Quicksand({ subsets: ['latin'], weight: 'variable', variable: '--font-quicksand', display: 'swap' })
 
 export const metadata = {
   title: 'Next13 Second',
@@ -14,14 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`flex min-h-full ${rubik.variable} ${quicksand.variable} font-quicksand overflow-x-hidden`}>
-        <Header />
-        <div className='relative flex flex-col flex-1 min-h-full'>
-          <main className='flex-1'>
-            {children}
-          </main>
-          <Footer />
-        </div>
+      <body className={`flex min-h-full bg-zinc-900 ${rubik.variable} ${quicksand.variable} font-quicksand overflow-x-hidden`}>
+          <Header />
+          <div className='relative flex flex-col flex-1 min-h-full'>
+            <main className='flex-1 text-white'>
+              {children}
+            </main>
+            <Footer />
+          </div>
       </body>
     </html>
   )
